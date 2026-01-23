@@ -320,11 +320,12 @@
       if (bWinner) document.getElementById('bronze').textContent = bWinner;('.medal').textContent = '🥉 ' + bWinner;
     }
 
-    setTimeout(createKnockout, 0);
+    setTimeout(() => { createKnockout(); loadState(); }, 0);
 
   </script>
 
 </body>
 </html>
+
 
 
