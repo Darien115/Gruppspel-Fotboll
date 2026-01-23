@@ -32,62 +32,62 @@
 
   <div class="groups" id="groups"></div>
 
-  const STORAGE_KEY = 'fotbollsturnering_v1';
-
-  function saveState() {
-    const data = {
-      groups: [...document.querySelectorAll('.group[data-type="group"]')].map(g => ({
-        groupName: g.querySelector('h2 input').value,
-        teams: [...g.querySelectorAll('tbody tr')].map(r => ({
-          name: r.querySelector('td.name input').value,
-          matches: []
-        })),
-        matches: [...g.querySelectorAll('.match')].map(m => ({
-          s1: m.querySelector('.s1').value,
-          s2: m.querySelector('.s2').value
-        }))
-      })),
-      knockout: [...document.querySelectorAll('#knockout-body tr')].map(r => ({
-        id: r.dataset.id,
-        s1: r.querySelector('.ks1')?.value || '',
-        s2: r.querySelector('.ks2')?.value || ''
-      }))
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }
-
-  function loadState() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-    const data = JSON.parse(raw);
-
-    const groups = [...document.querySelectorAll('.group[data-type="group"]')];
-    data.groups.forEach((g,i) => {
-      if (!groups[i]) return;
-      groups[i].querySelector('h2 input').value = g.groupName;
-      g.teams.forEach((t,j) => {
-        const row = groups[i].querySelectorAll('tbody tr')[j];
-        if (row) row.querySelector('td.name input').value = t.name;
-      });
-      g.matches.forEach((m,j) => {
-        const match = groups[i].querySelectorAll('.match')[j];
-        if (!match) return;
-        match.querySelector('.s1').value = m.s1;
-        match.querySelector('.s2').value = m.s2;
-      });
-      updateGroup(groups[i]);
-    });
-
-    const rows = [...document.querySelectorAll('#knockout-body tr')];
-    data.knockout.forEach((k,i) => {
-      if (!rows[i]) return;
-      rows[i].querySelector('.ks1').value = k.s1;
-      rows[i].querySelector('.ks2').value = k.s2;
-    });
-    calculateKnockout();
-  }
-  
   <script>
+    const STORAGE_KEY = 'fotbollsturnering_v1';
+
+    function saveState() {
+      const data = {
+        groups: [...document.querySelectorAll('.group[data-type="group"]')].map(g => ({
+          groupName: g.querySelector('h2 input').value,
+          teams: [...g.querySelectorAll('tbody tr')].map(r => ({
+            name: r.querySelector('td.name input').value,
+            matches: []
+          })),
+          matches: [...g.querySelectorAll('.match')].map(m => ({
+            s1: m.querySelector('.s1').value,
+            s2: m.querySelector('.s2').value
+          }))
+        })),
+        knockout: [...document.querySelectorAll('#knockout-body tr')].map(r => ({
+          id: r.dataset.id,
+          s1: r.querySelector('.ks1')?.value || '',
+          s2: r.querySelector('.ks2')?.value || ''
+        }))
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+
+      const groups = [...document.querySelectorAll('.group[data-type="group"]')];
+      data.groups.forEach((g,i) => {
+        if (!groups[i]) return;
+        groups[i].querySelector('h2 input').value = g.groupName;
+        g.teams.forEach((t,j) => {
+          const row = groups[i].querySelectorAll('tbody tr')[j];
+          if (row) row.querySelector('td.name input').value = t.name;
+        });
+        g.matches.forEach((m,j) => {
+          const match = groups[i].querySelectorAll('.match')[j];
+          if (!match) return;
+          match.querySelector('.s1').value = m.s1;
+          match.querySelector('.s2').value = m.s2;
+        });
+        updateGroup(groups[i]);
+      });
+
+      const rows = [...document.querySelectorAll('#knockout-body tr')];
+      data.knockout.forEach((k,i) => {
+        if (!rows[i]) return;
+        rows[i].querySelector('.ks1').value = k.s1;
+        rows[i].querySelector('.ks2').value = k.s2;
+      });
+      calculateKnockout();
+    }
+  
     const GROUP_COUNT = 4;
     const TEAMS_PER_GROUP = 4;
     const groupsEl = document.getElementById('groups');
@@ -326,4 +326,5 @@
 
 </body>
 </html>
+
 
