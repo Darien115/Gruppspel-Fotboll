@@ -91,14 +91,13 @@
       `;
 
       group.querySelectorAll('.match input').forEach(inp => inp.addEventListener('input', () => {
-        updateGroup(group);
-        saveState();
-      });
+                                                      updateGroup(group);
+                                                      saveState();
+                                                    });
       group.querySelectorAll('td.name input').forEach(inp => inp.addEventListener('input', () => {
-        updateGroup(group);
-        saveState();
-      });
-
+                                                        updateGroup(group);
+                                                        saveState();
+                                                      });
       return group;
     }
 
@@ -302,12 +301,7 @@
       calculateKnockout();
     }, 0);
 
-
   </script>
 
 </body>
 </html>
-
-
-
-
