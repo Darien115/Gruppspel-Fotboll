@@ -21,6 +21,44 @@
     .match { display:flex; align-items:center; justify-content:space-between; gap:px; margin-bottom:6px; }
     .match span { flex:1; text-align:center; font-size:12px; }
     h2 { text-align:center; }
+
+    @media (max-width: 700px) {
+      body {
+      padding:10px;
+     }
+     h1 {
+      font-size:22px;
+     }
+     .groups {
+      grid-template-columns: 1fr;
+     }
+     table {
+      font-size:14px;
+     }
+     th, td {
+      padding:4px;
+     }
+     td.name input {
+      font-size:14px;
+     }
+      input.score {
+      width:32px;
+      font-size:14px;
+     }
+     .match {
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:4px;
+     }
+     .match span {
+      flex-basis:100%;
+      text-align:center;
+      font-size:13px;
+     }
+     #podium div {
+      flex-direction:column;
+     }
+    }
   </style>
 </head>
 
@@ -252,6 +290,39 @@
     }
 
     setTimeout(createKnockout, 0);
+
+    function saveTournament() {
+      const data = [];
+
+      document.querySelectorAll("input").forEach(input => {
+        data.push(input.value);
+      });
+
+      localStorage.setItem("tournamentData", JSON.stringify(data));
+    }
+
+    function loadTournament() {
+      const saved = localStorage.getItem("tournamentData");
+      if (!saved) return;
+
+      const data = JSON.parse(saved);
+      const inputs = document.querySelectorAll("input");
+
+      inputs.forEach((input, i) => {
+        if (data[i] !== undefined) {
+        input.value = data[i];
+        }
+      });
+    }
+
+    document.addEventListener("input", saveTournament);
+
+    window.addEventListener("load", () => {
+      loadTournament();
+
+      document.querySelectorAll('.group[data-type="group"]').forEach(updateGroup);
+      calculateKnockout();
+    });
     
   </script>
 
