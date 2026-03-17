@@ -22,41 +22,52 @@
     .match span { flex:1; text-align:center; font-size:12px; }
     h2 { text-align:center; }
 
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
       body {
       padding:10px;
      }
      h1 {
       font-size:22px;
      }
+     h2 {
+      font-size:18px;
      .groups {
       grid-template-columns: 1fr;
      }
      table {
-      font-size:14px;
+      font-size:13px;
      }
      th, td {
       padding:4px;
      }
      td.name input {
-      font-size:14px;
+      font-size:13px;
      }
       input.score {
-      width:32px;
-      font-size:14px;
+      width:28px;
+      font-size:12px;
      }
      .match {
-      flex-wrap:wrap;
+      display:flex;
+      align-item:center;
       justify-content:center;
       gap:4px;
+      margin-bottom:6px;
      }
      .match span {
-      flex-basis:100%;
-      text-align:center;
-      font-size:13px;
+      font-size:12px;
+     }
+     .match .t1 {
+      flex:1;
+      text-align:right;
+     }
+     .match .t2 {
+      flex:1;
+      text-align:left;
      }
      #podium div {
       flex-direction:column;
+      gap:10px;
      }
     }
   </style>
