@@ -1,0 +1,152 @@
+:root {
+    --bg-color: #165e2f;
+    --card-bg: #0b3019;
+    --text-color: #e5e7eb;
+    --border-color: #335533;
+}
+
+body { 
+    font-family: Arial, sans-serif; 
+    background:linear-gradient(180deg, var(--bg-color), 80%, #ffc002);
+    color:var(--text-color); 
+    padding:20px; 
+}
+
+header { 
+    margin-bottom: 10px; 
+    text-align:center; 
+}
+
+.groups { 
+    display:grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); 
+    gap:16px; 
+}
+
+.group { 
+    background:var(--card-bg); 
+    border-radius:12px; 
+    padding:12px; 
+    box-shadow:0 10px 20px rgba(0,0,0,.3); 
+}
+.group h2 input { 
+    text-align:center; 
+    width:100%; 
+    font-size:18px; background:transparent; 
+    color:var(--text-color); 
+    border:none; 
+    border-bottom:1px solid var(--border-color); 
+}
+
+table { 
+    width:100%; 
+    border-collapse: collapse; 
+    margin-top:2px; 
+}
+
+th, td { 
+    border-bottom:1px solid var(--border-color); 
+    padding:6px; 
+    text-align:center; 
+}
+
+th { 
+    font-size:12px; 
+    color:var(--text-color); 
+}
+
+td.name input { 
+    width:100%; 
+    background:transparent; 
+    color:var(--text-color); 
+    border:none; 
+}
+
+input.score { 
+    width:40px; 
+    text-align:center; 
+}
+
+.matches { 
+    margin-top:10px; 
+    text-align:center; 
+}
+
+.match { 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+    gap:5px; 
+    margin-bottom:6px; 
+}
+
+.match span { 
+    flex:1; 
+    text-align:center; 
+    font-size:12px; 
+}
+
+h2 { 
+    text-align:center; 
+}
+
+h3 { 
+    text-align:center;
+}
+
+button { 
+    background:#d26a09; 
+    color:var(--text-color); 
+    border:none; 
+    padding:5px 10px; 
+    border-radius:8px;
+    cursor:pointer;
+}
+
+@media (max-width: 700px) {
+    body {
+      padding:10px;
+    }
+
+    h1 {
+      font-size:22px;
+    }
+
+    .groups {
+      grid-template-columns: 1fr;
+    }
+
+    table {
+      font-size:14px;
+    }
+
+    th, td {
+      padding:4px;
+    }
+
+    td.name input {
+      font-size:14px;
+    }
+
+    input.score {
+      width:32px;
+      font-size:14px;
+    }
+
+    .match {
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:4px;
+    }
+    
+    .match span {
+      flex-basis:100%;
+      text-align:center;
+      font-size:13px;
+    }
+
+    #podium div {
+      flex-direction:column;
+    }
+
+}
