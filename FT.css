@@ -101,7 +101,6 @@ button {
     padding:5px 10px; 
     border-radius:8px;
     cursor:pointer;
-    height: 60px;
 }
 
 @media (max-width: 700px) {
